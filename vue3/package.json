@@ -1,0 +1,44 @@
+{
+  "name": "vue3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run storybook",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.15",
+    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/testing-library": "0.0.13",
+    "@storybook/vue3": "^6.5.15",
+    "babel-loader": "^8.3.0",
+    "vue-loader": "^16.8.3",
+    "postcss": "8.4.13",
+    "postcss-flexbugs-fixes": "5.0.2",
+    "postcss-loader": "4.2.0",
+    "sass": "1.26.2",
+    "sass-loader": "8.0.2",
+    "autoprefixer": "10.4.7",
+    "css-loader": "2.0.2",
+    "@vue/cli-plugin-babel": "~5.0.0"
+  },
+  "dependencies": {
+    "dayjs": "1.11.7",
+    "element-plus": "2.2.28",
+    "vue": "3.2.45",
+    "@vue/compat": "3.2.45",
+    "echarts": "5.3.3",
+    "lodash-es": "4.17.11"
+  }
+}

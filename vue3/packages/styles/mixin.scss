@@ -1,0 +1,31 @@
+// 单行省略
+@mixin ellipsis() {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+// 多行省略
+@mixin multiEllipsis($line: 2) {
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+// 使用方式:
+// .text{
+//     @include multiEllipsis(3)  // 表示只显示三行,多出来的显示省略号
+// }
+// 布局居中
+@mixin center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+// 文本居中
+@mixin txtCenter($height:100%){
+    height: $height;
+    line-height: $height;
+    text-align: center;
+}
