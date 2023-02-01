@@ -1,8 +1,8 @@
 // 指令
 import './directives'
+import './dayjs'
 // element ui 相关
 import './elements'
-import './dayjs'
 import '../components/Icon/installNormal'
 import '../components/Icon/installColor'
 import './echarts'
