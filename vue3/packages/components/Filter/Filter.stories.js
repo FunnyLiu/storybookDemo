@@ -791,80 +791,77 @@ export const 日期 = Template.bind({})
         shortcuts: [
           {
             text: '最近一周',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-              picker.$emit('pick', [start, end])
+              return[start, end]
             }
           },
           {
             text: '最近一个月',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-              picker.$emit('pick', [start, end])
+              return [start, end]
             }
           },
           {
             text: '最近三个月',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-              picker.$emit('pick', [start, end])
+              return [start, end]
             }
           }
         ]
       }
     },
     {
-      type: 'monthrange',
-      label: '月度范围选择器',
-      prop: 'month1'
-    },
-    {
       type: 'datetimerange',
       label: '时间点范围选择',
-      valueFormat: 'yyyy-MM-dd hh:mm:ss',
+      format: 'YYYY-MM-DD HH:mm:ss',
+      valueFormat: 'YYYY-MM-DD HH:mm:ss',
       prop: 'time1'
     },
     {
       type: 'year',
       label: '年份选择',
-      valueFormat: 'yyyy',
+      valueFormat: 'YYYY',
       prop: 'year1'
     },
     {
       type: 'month',
       label: '月份选择',
-      valueFormat: 'yyyy-MM',
+      valueFormat: 'YYYY-MM',
       prop: 'month1'
     },
     {
       type: 'date',
       label: '日期选择',
-      valueFormat: 'yyyy-MM-dd',
+      valueFormat: 'YYYY-MM-DD',
       prop: 'dateSingle1'
     },
     {
       type: 'dates',
       label: '日期多个选择',
-      valueFormat: 'yyyy-MM-dd',
+      valueFormat: 'YYYY-MM-DD',
       prop: 'dateSingle2'
     },
     {
       type: 'week',
       label: '星期选择',
-      valueFormat: 'yyyy-MM-dd',
+      valueFormat: 'YYYY-MM-DD',
       prop: 'week1'
     },
     {
       type: 'datetime',
       label: '时间选择',
-      valueFormat: 'yyyy-MM-dd hh:mm:ss',
-      prop: 'datetime1'
+      prop: 'datetime1',
+      format: 'YYYY-MM-DD HH:mm:ss',
+      valueFormat: 'YYYY-MM-DD HH:mm:ss'
     }
   ]
 }
@@ -876,7 +873,9 @@ export const 日期 = Template.bind({})
 
 const Template2 = (args, { argTypes }) => {
   return {
-    props: initProps(args),
+    setup() {
+      return { args }
+    },
     data() {
       return {}
     },
@@ -889,7 +888,7 @@ const Template2 = (args, { argTypes }) => {
       }
     },
     template: `<div>
-          <do-filter ref="filter" :filters="filters" @filtered="filtered" />
+          <do-filter ref="filter" v-bind="args" @filtered="filtered" />
         </div>`
   }
 }
@@ -911,29 +910,29 @@ export const 时间段按钮 = Template2.bind({})
         shortcuts: [
           {
             text: '最近一周',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-              picker.$emit('pick', [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD'), '最近一周'])
+              return [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD')]
             }
           },
           {
             text: '最近一个月',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-              picker.$emit('pick', [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD'), '最近一个月'])
+              return [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD')]
             }
           },
           {
             text: '最近三个月',
-            onClick(picker) {
+            value: () => {
               const end = new Date()
               const start = new Date()
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-              picker.$emit('pick', [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD'), '最近三个月'])
+              return [dayjs(start).format('YYYY-MM-DD'), dayjs(end).format('YYYY-MM-DD')]
             }
           }
         ]
@@ -1025,7 +1024,7 @@ export const 按钮 = Template.bind({})
       id: 'btn8',
       type: 'button',
       name: '按钮8带图标',
-      icon: 'el-icon-edit'
+      icon: 'EditPen'
     },
     {
       id: 'btn9',

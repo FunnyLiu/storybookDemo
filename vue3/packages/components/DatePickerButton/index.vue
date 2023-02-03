@@ -16,7 +16,6 @@
       v-bind="$attrs"
     />
     <el-button
-      size="small"
       class="do-date-picker-button-btn"
       @click="showPicker"
     >{{
@@ -117,7 +116,7 @@ export default {
   :deep(.circle-close) {
     position: absolute;
     right: 5px;
-    top: 14px;
+    top: 10px;
     color: #c0c4cc;
     cursor: pointer;
   }

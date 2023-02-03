@@ -89,6 +89,7 @@
           :format="filter.format || 'YYYY-MM-DD'"
           :value-format="filter.valueFormat || 'YYYY-MM-DD'"
           :picker-options="filter.pickerOptions"
+          :shortcuts="(filter.pickerOptions || {}).shortcuts"
           @change="changeDateButton(filter, $event, index)"
         />
         <!-- 时间选择器组件 -->
@@ -117,6 +118,7 @@
           :format="filter.format || 'YYYY-MM-DD'"
           :value-format="filter.valueFormat || 'YYYY-MM-DD'"
           :picker-options="filter.pickerOptions"
+          :shortcuts="(filter.pickerOptions || {}).shortcuts"
           @change="(date) => changeDate(filter, date)"
         />
         <!-- 输入框组件 -->
@@ -159,7 +161,7 @@
             :round="filter.round"
             :circle="filter.circle"
             :style="filter.style"
-            :icon="filter.icon"
+            :icon="filter.icon ? formatIconName(filter.icon): undefined"
             :disabled="filter.disabled"
           >
             {{ filter.name }}
@@ -179,7 +181,7 @@
                 :key="idx"
                 :disabled="option.disabled"
                 :divided="option.divided"
-                :icon="option.icon"
+                :icon="option.icon ? formatIconName(option.icon): undefined"
                 :command="option.id"
               >{{ option.display||option.label }}</el-dropdown-item>
             </el-dropdown-menu>
@@ -245,6 +247,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 import DoRender from '../Render'
 import Icon from '../Icon'
 import DoDatePickerButton from '../DatePickerButton'
@@ -486,6 +489,17 @@ export default {
       this.isComplexSearchOpen = !this.isComplexSearchOpen
     },
     /**
+     * 兼容element和element-plus的icon名称
+     */
+    formatIconName(str) {
+      if (str.startsWith('el-icon-')) {
+        let result = str.substring(8)
+        result = result.replace(/-(\w)/g, (match, letter) => letter.toUpperCase());
+        return result;
+      }
+      return str;
+    },
+    /**
      * 对外暴露的清空操作
      */
     reset(params) {
@@ -565,11 +579,14 @@ export default {
       if (!date) {
         name = '选择时间'
       } else {
-        name = date.length > 2
-          ? date[2]
-          // : `${this.$moment(date[0]).format(valueFormat || 'YYYY-MM-DD')} - ${this.$moment(date[1]).format(valueFormat || 'YYYY-MM-DD')}`
-          // 移除对moment的强依赖
-          : `${formatDate(date[0], valueFormat || 'YYYY-MM-DD')} - ${formatDate(date[1], valueFormat || 'YYYY-MM-DD')}`
+        name = `${formatDate(date[0], valueFormat || 'YYYY-MM-DD')} - ${formatDate(date[1], valueFormat || 'YYYY-MM-DD')}`
+        // 这里只能手动比较并赋值了，因为element-plus里没有暴露以前的model数组后续参数了
+        filter.pickerOptions.shortcuts.forEach(( shortcut ) => {
+          const [start, end] = shortcut.value() 
+          if(dayjs(date[0]).format('YYYY-MM-DD') == start && dayjs(date[1]).format('YYYY-MM-DD') == end) {
+            name = shortcut.text
+          }
+        })
       }
       this.$refs[`datepickerButton-${index}`][0].setText(name)
     },
@@ -609,6 +626,13 @@ export default {
   position: relative;
   :deep(.el-form-item) {
     margin-right: 10px;
+    vertical-align: top;
+  }
+  :deep(.el-form-item__label) {
+    display: inline-block;
+  }
+  :deep(.el-form-item__content) {
+    display: inline-block;
   }
   :deep(.el-input__icon) {
     height: 14px;
@@ -629,7 +653,7 @@ export default {
   }
   &-search {
     position: absolute;
-    bottom: 6px;
+    bottom: 2px;
     width: 100%;
     text-align:center;
     font-size: 12px;
