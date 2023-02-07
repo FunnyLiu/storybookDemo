@@ -7,7 +7,8 @@
  * @LastEditTime: 2022-01-18 11:32:27
 -->
 <template>
-  <el-dropdown :show-timeout="50" class="table-action" trigger="click" :hide-on-click="clickHide" size="medium"
+  <el-dropdown ref="dropdown" :teleported="teleported" :show-timeout="50" class="table-action" trigger="click" :hide-on-click="clickHide" size="medium"
+    @visible-change="teleported = true"
     @click.native="stopProp">
     <span class="el-dropdown-link table-cell-icon">
       <do-icon :icon-class="icon" />
@@ -157,6 +158,7 @@ export default {
     return {
       // 0 未注册 1 已注册2 未知3 上线4 离线5 无服务6 已释放
       envStatus: envStatus,
+      teleported: false,
       showDropDown: true, // 判断是否显示下拉
     };
   },
@@ -179,7 +181,8 @@ export default {
       immediate: true,
     },
   },
-  mounted() { },
+  mounted() { 
+  },
   methods: {
     buildCommand(id) {
       const command = {

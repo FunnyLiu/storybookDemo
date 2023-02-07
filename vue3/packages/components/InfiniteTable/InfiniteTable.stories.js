@@ -824,36 +824,36 @@ Array.from(Array(1000).keys()).map(id => {
     { prop: 'subName', label: '子项目名', showOverflowTooltip: true },
     { prop: 'subCode', label: '子项目编码', showOverflowTooltip: true },
     { prop: 'status', label: '状态', width: 180, showOverflowTooltip: true },
-    {
-      prop: '',
-      label: '设置',
-      width: 120,
-      showOverflowTooltip: true,
-      render: function(createElement, { row }) {
-        return createElement(
-          DoTableAction,
-          {
-            // props: {
-              actions: [
-                { id: 'intoProject', name: '进入项目', hidden: false, icon: 'into' },
-                { id: 'svn', name: 'svn', hidden: false, icon: 'svn', divided: true },
-                { id: 'chart', name: '数据报表', hidden: false, icon: 'chart', divided: true }
-              ],
-              row: row,
-              status: 0,
-              dropdownDisable: false,
-              clickHide: true,
-            // },
-            // 事件监听
-            // on: {
-              onAction: function(event) {
-                console.log(event)
-              }
-            // }
-          }
-        )
-      }
-    }
+    // {
+    //   prop: '',
+    //   label: '设置',
+    //   width: 120,
+    //   showOverflowTooltip: true,
+    //   render: function(createElement, { row }) {
+    //     return createElement(
+    //       DoTableAction,
+    //       {
+    //         // props: {
+    //           actions: [
+    //             { id: 'intoProject', name: '进入项目', hidden: false, icon: 'into' },
+    //             { id: 'svn', name: 'svn', hidden: false, icon: 'svn', divided: true },
+    //             { id: 'chart', name: '数据报表', hidden: false, icon: 'chart', divided: true }
+    //           ],
+    //           row: row,
+    //           status: 0,
+    //           dropdownDisable: false,
+    //           clickHide: true,
+    //         // },
+    //         // 事件监听
+    //         // on: {
+    //           onAction: function(event) {
+    //             console.log(event)
+    //           }
+    //         // }
+    //       }
+    //     )
+    //   }
+    // }
   ],
   list
 }
@@ -971,36 +971,36 @@ export const 底部加载更多 = TemplateLoadmore.bind({})
     { prop: 'subName', label: '子项目名', showOverflowTooltip: true },
     { prop: 'subCode', label: '子项目编码', showOverflowTooltip: true },
     { prop: 'status', label: '状态', width: 180, showOverflowTooltip: true },
-    {
-      prop: '',
-      label: '设置',
-      width: 120,
-      showOverflowTooltip: true,
-      render: function(createElement, { row }) {
-        return createElement(
-          DoTableAction,
-          {
-            // props: {
-              actions: [
-                { id: 'intoProject', name: '进入项目', hidden: false, icon: 'into' },
-                { id: 'svn', name: 'svn', hidden: false, icon: 'svn', divided: true },
-                { id: 'chart', name: '数据报表', hidden: false, icon: 'chart', divided: true }
-              ],
-              row: row,
-              status: 0,
-              dropdownDisable: false,
-              clickHide: true,
-            // },
-            // 事件监听
-            // on: {
-              onAction: function(event) {
-                console.log(event)
-              }
-            // }
-          }
-        )
-      }
-    }
+    // {
+    //   prop: '',
+    //   label: '设置',
+    //   width: 120,
+    //   showOverflowTooltip: true,
+    //   render: function(createElement, { row }) {
+    //     return createElement(
+    //       DoTableAction,
+    //       {
+    //         // props: {
+    //           actions: [
+    //             { id: 'intoProject', name: '进入项目', hidden: false, icon: 'into' },
+    //             { id: 'svn', name: 'svn', hidden: false, icon: 'svn', divided: true },
+    //             { id: 'chart', name: '数据报表', hidden: false, icon: 'chart', divided: true }
+    //           ],
+    //           row: row,
+    //           status: 0,
+    //           dropdownDisable: false,
+    //           clickHide: true,
+    //         // },
+    //         // 事件监听
+    //         // on: {
+    //           onAction: function(event) {
+    //             console.log(event)
+    //           }
+    //         // }
+    //       }
+    //     )
+    //   }
+    // }
   ]
 }
 底部加载更多.parameters = {
