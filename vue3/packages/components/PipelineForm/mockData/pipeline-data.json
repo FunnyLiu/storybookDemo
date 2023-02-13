@@ -1,0 +1,112 @@
+{
+    "name": "sdfadf",
+    "type": "",
+    "application": {
+        "id": null,
+        "type": "",
+        "typeId": null,
+        "templateId": null,
+        "subAppIds": []
+    },
+    "build": {
+        "deployKindof": "code",
+        "branch": "",
+        "imageVersion": "2.0.0",
+        "buildBy": 1,
+        "buildParams": {
+            "gzip": true,
+            "buildCmd": "build:prodk8s",
+            "routeType": "hash",
+            "routeValue": "",
+            "dependencyTransfer": false,
+            "mavenMultiProcessBuild": false,
+            "javadoc": false,
+            "javaSource": false,
+            "webhook": false,
+            "junit": false,
+            "others": "......"
+        },
+        "webhook": false,
+        "cron": "",
+        "mail": ""
+    },
+    "deployData": {
+        "deploy": [
+            {
+                "checked": true,
+                "env": "dev",
+                "deployType": "KUBERNETES",
+                "ingressSwitch": true,
+                "resource": "1C1G",
+                "configVersionId": 26203,
+                "configData": [
+                    {
+                        "configPath": "/opt/app",
+                        "configIds": [
+                            85184,
+                            85185
+                        ],
+                        "key": 1612147260000
+                    }
+                ],
+                "scale": 1,
+                "volume": [],
+                "gpu": {},
+                "healthCheck": {
+                    "type": "tcpSocket",
+                    "path": "",
+                    "port": "5000",
+                    "exec": ""
+                },
+                "port": {
+                    "http": {
+                        "inbound": "5000",
+                        "path": "/{{version}}/{{app_name}}/"
+                    },
+                    "tcp": []
+                },
+                "node_affinity": {
+                    "preferred": {
+                        "rules": [
+                            {
+                                "key": "",
+                                "operator": "",
+                                "values": []
+                            }
+                        ]
+                    },
+                    "required": {
+                        "rules": [
+                            {
+                                "key": "",
+                                "operator": "",
+                                "values": []
+                            }
+                        ]
+                    }
+                },
+                "pod_affinity": {
+                    "preferred": {
+                        "rules": []
+                    }
+                },
+                "pod_anti_affinity": {
+                    "preferred": {
+                        "rules": []
+                    }
+                },
+                "serverInfo": {
+                    "used": [],
+                    "assignPort": [],
+                    "config": []
+                },
+                "iframe": {
+                    "iframePolicy": "sameorigin",
+                    "iframeWhiteList": []
+                }
+            }
+        ]
+    },
+    "startParams": {},
+    "log": {}
+}

@@ -34,9 +34,14 @@ export default {
     }
   },
   methods: {
-    validForm() {
+    async validForm() {
       let result = false
-      this.$refs['elForm'].validate((valid) => { result = valid })
+      try {
+        result = await this.$refs['elForm'].validate()
+        
+      } catch (error) {
+        result = false
+      }
       return result
     },
     handleValidate(rule, isValid) {
