@@ -51,7 +51,7 @@
     "uuid": "9.0.0",
     "vue": "3.2.45",
     "vue-infinite-loading": "3.0.0-alpha.0-0",
-    "xlsx": "0.14.5",
+    "xlsx": "0.17.0",
     "photoclip2": "3.4.8",
     "axios": "0.18.1"
   }
